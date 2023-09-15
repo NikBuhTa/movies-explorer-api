@@ -7,6 +7,7 @@ const { errors } = require('celebrate');
 const cors = require('cors');
 
 const { NODE_ENV, DB_URL } = process.env;
+const { PORT = 3000 } = process.env;
 const routes = require('./routes/index');
 const { createUser, login, logout } = require('./controllers/users');
 const auth = require('./middlewares/auth');
@@ -47,4 +48,8 @@ app.use(errors());
 
 app.use((err, req, res, next) => {
   handleErrors(err, req, res, next);
+});
+
+app.listen(PORT, () => {
+  console.log('Connected', PORT);
 });
