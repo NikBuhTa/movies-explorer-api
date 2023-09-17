@@ -4,7 +4,7 @@ const { NotFoundError } = require('../errors/not-found-error');
 const Movie = require('../models/movies');
 
 const getMovies = (req, res, next) => {
-  Movie.find({})
+  Movie.find({ owner: req.user._id })
     .orFail(() => { throw new NotFoundError('Сохраненных фильмов нет'); })
     .populate(['owner'])
     .then((movies) => res.status(200).send({ data: movies }))
