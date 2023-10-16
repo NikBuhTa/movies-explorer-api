@@ -21,7 +21,7 @@ const app = express();
 mongoose.connect(NODE_ENV === 'production' ? DB_URL : 'mongodb://127.0.0.1:27017/bitfilmsdb');
 
 app.use(cors({
-  origin: 'https://moviesexplorer.nomoredomainsicu.ru',
+  origin: 'https://moviesexplorer.nomoredomainsrocks.ru/',
   credentials: true,
 }));
 app.use(cookieParser());
